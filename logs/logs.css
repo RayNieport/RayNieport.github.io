@@ -1,0 +1,33 @@
+body {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    color: white;
+    background: rgb(24, 24, 24);
+}
+
+.content-container {
+    font-size: 1em;
+    width: 70vw;
+    padding-left: 15vw;
+    padding-right: 15vw;
+}
+
+.content-container:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.content {
+    float: left;
+    width: 46%;
+    padding: 2%;
+}
+
+@media (max-aspect-ratio: 1/1){
+    .content{
+        width: 100%;
+    }
+}

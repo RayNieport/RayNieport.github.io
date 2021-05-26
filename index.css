@@ -1,0 +1,78 @@
+a, a:hover, a:active, a:visited { color:rgb(63, 119, 204); }
+
+body {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    color: white;
+    background: rgb(24, 24, 24);
+}
+
+.banner {
+    position: relative;    
+    background-image: url("index_images/hdd.jpg");
+    background-position: center;
+    background-size: cover;
+    background-color: rgb(24, 24, 24);
+    height: 40vh;
+    width: 100vw;
+    object-fit: cover;
+}
+
+.content-container {
+    font-size: 1em;
+    width: 80vw;
+    padding-left: 10vw;
+    padding-right: 10vw;
+}
+
+.content-container:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.content {
+    float: left;
+    width: 23%;
+    padding: 1%;
+}
+
+.link-image {
+    float: left;
+    width: 46%;
+    padding: 2%;
+}
+
+.link-image-content {
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+.link-image-content:hover {
+    box-shadow: 0 0 10px white;
+}
+
+.link-image-content:active {
+    box-shadow: 0 0 10px white;
+}
+
+.text-block {
+    position: absolute;
+    width: 70vw;
+    font-size: 2vh;
+    color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media (max-aspect-ratio: 1/1){
+    .content {
+        width: 100%;
+    }
+    .link-image {
+        width: 100%;
+    }
+}
