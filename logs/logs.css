@@ -1,3 +1,5 @@
+a, a:hover, a:active, a:visited { color:rgb(63, 119, 204); }
+
 body {
     font-family: 'Helvetica', 'Arial', sans-serif;
     font-size: 100%;
@@ -9,9 +11,9 @@ body {
 
 .content-container {
     font-size: 1em;
-    width: 70vw;
-    padding-left: 15vw;
-    padding-right: 15vw;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    /*width: 80vw;*/
 }
 
 .content-container:after {
@@ -26,8 +28,30 @@ body {
     padding: 2%;
 }
 
+.link-image {
+    float: left;
+    width: 46%;
+    padding: 2%;
+}
+
+.link-image-content {
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+.link-image-content:hover {
+    box-shadow: 0 0 10px white;
+}
+
+.link-image-content:active {
+    box-shadow: 0 0 10px white;
+}
+
 @media (max-aspect-ratio: 1/1){
     .content{
+        width: 100%;
+    }
+    .link-image {
         width: 100%;
     }
 }

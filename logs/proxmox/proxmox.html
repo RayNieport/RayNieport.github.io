@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ray's Proxmox Setup</title>
+    <link rel="stylesheet" type="text/css" href="proxmox.css">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1">   
+    <link rel="shortcut icon" href="/index_images/favicon.png" type="image/x-icon"/>
+</head>
+
+<body>
+    <div class="banner"></div>
+    
+    <div class="banner-text">
+        <h1>Proxmox Virtual Environment</h1>
+        <h3>An open-source virtualization platform built on KVM and LXC</h3>
+    </div>
+
+    <div class="content-container">
+        <h2><u>The Hypervisor</u></h2>
+        <p>
+            One of the first major decisions when creating a home server environment is the choice of <a href="https://en.wikipedia.org/wiki/Hypervisor">hypervisor</a>.
+            A hypervisor allows a single physical server to run multiple <a href="https://en.wikipedia.org/wiki/Virtual_machine">virtual machines</a> (VMs) in a process called virtualization, which has a number of benefits.
+            We won't dive into all the benefits here, but briefly: <strong><u>virtualization can increase the efficiency, reliability, and economic feasiblity of your homelab</u></strong>.
+        </p>
+        <p>
+            There are many good options when it comes to hypervisors: Hyper-V, VMware ESXi, Xen, Bhyve, and Linux's KVM are all popular in the homelab community.
+            I've personally used Hyper-V and ESXi in both my home server environment and in the industry.
+            Both are highly funcional pieces of software, but can be cost prohibitive depending on your home server setup.
+            While there are technically (feature-limited) versions of both ESXi and Hyper-V available free for individual use, I've moved away from these more tradtional options 
+            in favor of another solution: <a href="https://pve.proxmox.com/wiki/Main_Page">Proxmox Virtual Environment</a>.
+        </p>
+        <p>
+            Proxmox is an open source virtualization management solution built on Debian Linux.
+            It uses <a href="https://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine">KVM</a> (Kernel-based Virutal Machines) and <a href="https://en.wikipedia.org/wiki/LXC">LXC</a> 
+            (Linux Containers) to offer both heavyweight and lightweight virtualization options depending on your needs.
+            It also supports <a href="https://en.wikipedia.org/wiki/ZFS">ZFS</a>, an incredibly robust filesystem which is widely regarded as one of the most reliable in the industry.
+            Proxmox is controlled largely from its Web GUI, but you can also interface with it directly from the command line if you're comfortable doing so.
+        </p>
+        
+        <h2><u>Installation</u></h2>
+        <p>
+            Below is an installation tutorial from <a href="https://www.youtube.com/channel/UCp3yVOm6A55nx65STpm3tXQ">Craft Computing</a>, who has lots of good Proxmox and home-server content on his YouTube channel.
+            Keep reading though, as there are some tweaks to Proxmox that he doesn't cover here!
+        </p>
+        <p style="text-align:center"><iframe width="100%" src="https://www.youtube-nocookie.com/embed/azORbxrItOo" title="YouTube Proxmox Tutorial" frameborder="0" allow="encrypted-media;" allowfullscreen></iframe></p>
+        
+        <h2><u>Setup</u></h2>
+        <p>
+            After installing Proxmox, there are a several steps I like to take before getting down to business creating VMs and containers. First, we need to add a source to the package manager.
+            Proxmox offers a subscription, and you won't be able to update or install packages by default unless you pay the subscription fee or enable the community repository. To enable the repo:
+            <ol>
+                <li>Edit <code>/etc/apt/sources.list.d/pve-enterprise.list</code> with your favorite text editor.</li>
+                <li>Comment out <code>deb https://enterprise.proxmox.com/debian/pve buster pve-enterprise</code>.</li>
+                <li>Add the folling line: <code>deb http://download.proxmox.com/debian/pve buster pve-no-subscription</code>.</li>
+            </ol>
+        </p>
+        <p>
+            Next, I like to install <a href="https://github.com/Weilbyte/PVEDiscordDark">PVEDiscordDark</a>, which gives the Proxmox Web GUI a nice dark theme. 
+            The default theme is bright white, and I've fallen in love with all things Dark Mode&trade;. Save your eyes, and enjoy some late night homelabbing.
+        </p>
+        <p>
+            As I mentioned previously, one of the great things about Proxmox is its built in support for the ZFS filesystem. 
+            Whenever I set up a new Proxmox installation, I almost always <a href="https://pve.proxmox.com/wiki/ZFS_on_Linux">create a ZFS storage pool</a> to keep my VMs, containers, and data safe. 
+            See <a href="https://youtu.be/GoZaMgEgrHw?t=190">this video from Techno Tim</a> for help setting up ZFS and other useful Proxmox features.
+            ZFS is one of the most advanced and robust filesystems in existence, but remember: ZFS or traditional RAID are no substitute for a true backup!
+            ZFS can help prevent against bitrot, faulty drives, and more - but it can't save your data in the event of a true disaster. 
+            <strong><u>You should always keep your truly valuable data stored in at least three different places.</u></strong> One these locations should be offsite. 
+            Consider investing in cloud storage, or backing up data at a friend or family member's home. 
+            Read up on <a href="https://pve.proxmox.com/wiki/Backup_and_Restore">Proxmox Backup and Restore</a>.
+        </p>
+        <p>
+            Finally, consider installing some useful packages such as <a href="https://www.ocf.berkeley.edu/~ckuehl/tmux/">tmux</a> and <a href="https://github.com/aristocratos/bpytop">bpytop</a>. 
+            These will be helpful when using Proxmox from the command line.
+        </p>
+
+        <h2><u>Conclusion</u></h2>
+        <p>
+            Now that Proxmox is up and running, you can create VMs and containers to your heart's content! 
+            Proxmox is very powerful, and we've only just scratched the surface. 
+            Check out <a href="https://pve.proxmox.com/wiki/PCI(e)_Passthrough">PCIe passthrough</a>, or maybe explore the difference between VMs and containers.
+            Most importantly, have fun!
+        </p>
+    </div>
+
+</body>
+
+</html>
