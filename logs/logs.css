@@ -53,6 +53,28 @@ body {
     box-shadow: 0 0 10px white;
 }
 
+.navbar ul {
+    list-style-type: none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+.navbar li {
+    display: inline-flex;
+}
+.navbar a {
+    display: block;
+    color: white;
+    font-size: 1.25em;
+    padding: 1vh 2.5vw;
+    text-decoration: none;
+}
+.navbar a:hover {
+    background-color: rgb(24, 24, 24);
+}
+
+
 @media (max-aspect-ratio: 1/1){
     .content{
         width: 100%;
