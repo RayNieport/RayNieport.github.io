@@ -1,4 +1,4 @@
-a, a:hover, a:active, a:visited { color:rgb(63, 119, 204); text-decoration: none; }
+a, a:hover, a:active, a:visited { color:rgb(104,164,255); text-decoration: none; }
 
 body {
     font-family: 'Helvetica', 'Arial', sans-serif;
@@ -11,27 +11,28 @@ body {
 
 .banner {
     background-image: url("../log_images/PfSense.png");
-    filter: blur(2px);
     -webkit-filter: blur(2px);
+    filter: blur(2px);
     background-color: rgb(24, 24, 24);
     opacity: 0.4;
-
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-
-    height: 40vh;
+    height: 50vh;
 }
 
 .banner-text {
     position: absolute;
     width: 80vw;
-    font-size: 2.5vh;
-    color: white;
     top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+    font-size: 4vh;
+    color: white;
+}
+.banner-text h2 {
+    font-size: 4vh;
 }
 
 .content-container {
@@ -40,7 +41,6 @@ body {
     padding-left: 15vw;
     padding-right: 15vw;
 }
-
 .content-container code {
     color:white;
     background-color: rgb(14, 14, 14);
@@ -48,30 +48,55 @@ body {
     font-size: 105%;
     word-wrap: break-word;
 }
-
-.content-container iframe {
+.content-container img {
     height: 27vw;
     width: 48vw;
+    opacity: 0.8;
 }
-
 .content-container p {
     margin-bottom: 2em;
 }
-
 .content-container:after {
     content: "";
     display: table;
     clear: both;
 }
 
-.content {
-    float: left;
-    width: 23%;
-    padding: 1%;
+.navbar ul {
+    list-style-type: none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    position: absolute;
+    top: 98%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+.navbar li {
+    display: inline-flex;
+}
+.navbar a {
+    display: block;
+    color: white;
+    font-size: 1.25em;
+    padding: 1vh 2.5vw;
+    text-decoration: none;
+}
+.navbar a:hover {
+    background-color: rgb(24, 24, 24);
+}
+
+.youtubevideo {
+    text-align: center;
 }
 
 @media (max-aspect-ratio: 1/1){
-    .content {
-        width: 100%;
+    .banner-text {
+        font-size: 4vw;
+    }
+    .banner-text h2{
+        font-size: 4vw
     }
 }

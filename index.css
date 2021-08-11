@@ -1,4 +1,4 @@
-a, a:hover, a:active, a:visited { color:rgb(63, 119, 204); }
+a, a:hover, a:active, a:visited { color:rgb(104,164,255); }
 
 body {
     font-family: 'Helvetica', 'Arial', sans-serif;
@@ -27,11 +27,14 @@ body {
 .banner-text {
     position: absolute;
     width: 80vw;
-    font-size: 2vh;
+    font-size: 3vh;
     color: white;
     top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+.banner-text h2 {
+    font-size: 3vh;
 }
 
 .content-container {
@@ -78,5 +81,11 @@ body {
     }
     .link-image {
         width: 100%;
+    }
+    .banner-text {
+        font-size: 3vw;
+    }
+    .banner-text h2{
+        font-size: 3vw
     }
 }

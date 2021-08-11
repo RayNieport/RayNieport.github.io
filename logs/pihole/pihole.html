@@ -1,28 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Ray's Pihole Setup</title>
-    <link rel="stylesheet" type="text/css" href="pihole.css">
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1">   
-    <link rel="shortcut icon" href="/index_images/favicon.png" type="image/x-icon"/>
+    <title>Ray's Pi-hole Setup</title>
+    <link rel="stylesheet" type="text/css" href="pihole.css">
+    <link rel="shortcut icon" href="../../index_images/favicon.png" type="image/x-icon"/>
+    <link rel="preload" as="image" href="../log_images/Pihole.png" />
 </head>
 
 <body>
     <div class="banner"></div>
     
     <div class="banner-text">
-        <h1>Pihole</h1>
-        <h3>Network-wide Ad Blocking</h3>
+        <h1>Pi-hole</h1>
+        <h2>Network-wide Ad Blocking</h2>
     </div>
 
     <div class="content-container">
-        <br>
-        <p style="text-align: center;">
-            Nothing here yet! Please check back later.
+        <h2><u>Introduction</u></h2>
+        <p>
+            When you type a <a href="https://en.wikipedia.org/wiki/URL">URL</a> into your web browser and hit enter, a request is sent from your computer to the web server that is hosting the page you're trying to view.
+            But how does your computer know which web server to ask for that page? The internet is constantly growing and changing, and there are a vast quantity of web servers to choose from.
+            The process is a little involved, but understanding the process will let you gain better control over your network. I'll give a slightly simplified overview of the process below.
         </p>
+        <p>
+            First, let's discuss that URL you typed in. In this case we'll assume <code>https://raynieport.github.io</code>, since you're reading this article.
+            We start at the far right: 'io'. That's the top-level domain, and you've undoubtedly seen others like 'com', 'org', 'gov', 'edu', and so on.
+            Moving left, 'github' is the name of the domain you're trying to visit. Finally, 'raynieport' is the subdomain.
+            When you type a URL in, your computer first asks the top level domain (io) where to find the domain (github), and then asks the domain where to find the subdomain (raynieport).
+            This method of oragnization allows your computer to find the right website out of the millions of servers connected to the internet.
+        </p>
+        <p>
+            However, if you're already thinking of tinkering with your home network or setting up a home server environment, you're probably aware that the internet is built on
+            <a href="https://en.wikipedia.org/wiki/Internet_protocol_suite">TCP/IP</a>.
+            This means that every web server is accessed by an IP address, not by the actual URL that you type in. So how does this work?
+            You don't usually type in an IP address to go to your favorite website, although you could. Enter <a href="https://en.wikipedia.org/wiki/Domain_Name_System">DNS</a>.
+        </p>
+
+        <h2><u>DNS</u></h2>
+        <p>
+            DNS stands for "Domain Name System", and it translates human-readable URLs into IP addresses that your computer uses. Think of the Yellow Pages, but for the internet.
+            Instead of asking the top level domain where to find the domain and so on, your computer asks your DNS server to do the searching instead.
+            If you've never accessed a given website before, the DNS server performs the search as usual and saves the results. If you've been there before, the DNS server quickly loads the address from memory.
+            The DNS server then returns the IP address for the website you're trying to visit, and your computer loads the appropriate webpage.
+        </p>
+        <p>
+            DNS is crucial to the functionality of the internet as we know it. Without it, you'd have to remember the IP addresses for all your favorite websites!
+            That being said, you might be thinking "How have I been accessing the internet this whole time? I've never set up a DNS server."
+            Well, you're probably using the DNS service provided by your ISP (Internet Service Provider). While this is convenient, it has some potential downsides.
+        </p>
+        <p>
+            First of all, ISP DNS servers typically have a huge number of users, and can be pretty slow depending on your provider.
+            Secondly, if you use your ISP's DNS server, <strong><u>they can potentially log every website you send a request for, and even outright block certain domains.</u></strong>
+            Even if you're using HTTPS, which encrypts the traffic to and from a site, your ISP can still see which sites you're trying to connect to.
+            Some ISPs even sell this data or use it to create targeted advertising.
+            While a few ISPs might promise that they don't ever look at the data in their DNS servers, there's nothing stopping them from doing so.
+            Given these privacy concerns, you may want to consider hosting your own DNS server or switching to a more trusted one
+            (Cloudflare's <a href="https://www.cloudflare.com/learning/dns/what-is-1.1.1.1/">1.1.1.1</a> is popular in the home server community).
+        </p>
+
+        <h2><u>DNS Sinkholes</u></h2>
+        <p>
+            Alright, now that you know a bit more about DNS, we can get to the main topic of this article. As mentioned above, if you're using your ISP's DNS server, they can potentially block certain domains.
+            This occurs when your computer asks for the IP address of a certain domain, and the DNS server ignores the request. If the DNS server doesn't send the IP address back, you can't connect.
+            Fortunately, we can use this same method to our advantage.
+        </p>
+        <p>
+            When you load up a typical modern webpage, assets are often loaded from several different sources.
+            For example, a video (like an embedded YouTube video) may reside on a completely diffent web server than the HTML and CSS.
+            Ads are one of the most common assets to be loaded from an external source.
+            A huge majority of ads online are <a href="https://en.wikipedia.org/wiki/Ad_serving">essentially embedded links</a> that display targeted adverstising based on who is viewing them.
+            So, if a webpage tries to connect to an advertising domain to load ads, but the DNS server doesn't return the IP address... then the webpage will load up ad-free.
+        </p>
+        <p>
+            A "DNS sinkhole" returns the IP address as usual for most connections, but refuses to return the IP address of a specific set of domains.
+            In this case, we want to ignore requests for known adverstising domains. If you create such a DNS sinkhole on your local network and send all DNS requests to it, the result is
+            <strong><u>a nearly ad-free internet connection for all devices on your network, including phones and devices without traditional ad-blocking software.</u></strong>
+        </p>
+
+        <h2><u>Pi-hole</u></h2>
+        <p>
+            <a href="https://en.wikipedia.org/wiki/Pi-hole">Pi-hole</a> is a lightweight and easy-to-manage DNS sinkhole desined specifically to block ads across your local network.
+            The service is so lightweight, in fact, that it can be run on something as inexpensive as a Raspberry Pi (hense the name Pi-hole). The installation is pretty straightforward,
+            and it can run on <a href="https://docs.pi-hole.net/main/prerequisites/">a wide range of Linux devices</a>. Below is a setup video from Linus Tech Tips, but there are also
+            installation instructions on the project's <a href="https://github.com/pi-hole/pi-hole/#one-step-automated-install">GitHub</a>. If you prefer to run Pi-hole in 
+            <a href="https://en.wikipedia.org/wiki/Docker_(software)">Docker</a>, see the <a href="https://github.com/pi-hole/docker-pi-hole/#running-pi-hole-docker">official Docker image</a>.
+        </p>
+        <p class="youtubevideo"><a href="https://youtu.be/KBXTnrD_Zs4" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/KBXTnrD_Zs4/maxresdefault.jpg" loading="lazy" alt="YouTube Tutorial"></a></p>
     </div>
 
+    <div class="navbar">
+        <ul>
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../logs.html">Logs</a></li>
+            <li><a href="https://github.com/RayNieport">Github</a></li>
+        </ul>
+    </div>
 </body>
 
 </html>

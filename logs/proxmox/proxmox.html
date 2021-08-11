@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Ray's Proxmox Setup</title>
-    <link rel="stylesheet" type="text/css" href="proxmox.css">
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1">   
-    <link rel="shortcut icon" href="/index_images/favicon.png" type="image/x-icon"/>
+    <title>Ray's Proxmox Setup</title>
+    <link rel="stylesheet" type="text/css" href="proxmox.css">
+    <link rel="shortcut icon" href="../../index_images/favicon.png" type="image/x-icon"/>
+    <link rel="preload" as="image" href="../log_images/Proxmox.png" />
 </head>
 
 <body>
     <div class="banner"></div>
-    
+
     <div class="banner-text">
         <h1>Proxmox Virtual Environment</h1>
-        <h3>An open-source virtualization platform built on KVM and LXC</h3>
+        <h2>An open-source virtualization platform built on KVM and LXC</h2>
     </div>
 
     <div class="content-container">
@@ -43,8 +44,9 @@
             Below is an installation tutorial from <a href="https://www.youtube.com/channel/UCp3yVOm6A55nx65STpm3tXQ">Craft Computing</a>, who has lots of good Proxmox and home-server content on his YouTube channel.
             Keep reading though, as there are some tweaks to Proxmox that he doesn't cover here!
         </p>
-        <p style="text-align:center"><iframe width="100%" src="https://www.youtube-nocookie.com/embed/azORbxrItOo" title="YouTube Proxmox Tutorial" frameborder="0" allow="encrypted-media;" allowfullscreen></iframe></p>
+        <p class="youtubevideo"><a href="https://youtu.be/azORbxrItOo" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/azORbxrItOo/maxresdefault.jpg" loading="lazy" alt="YouTube Tutorial"></a></p>
         
+
         <h2><u>Setup</u></h2>
         <p>
             After installing Proxmox, there are a several steps I like to take before getting down to business creating VMs and containers. First, we need to add a source to the package manager.
@@ -83,6 +85,13 @@
         </p>
     </div>
 
+    <div class="navbar">
+        <ul>
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../logs.html">Logs</a></li>
+            <li><a href="https://github.com/RayNieport">Github</a></li>
+        </ul>
+    </div>
 </body>
 
 </html>
