@@ -14,7 +14,7 @@ body {
     -webkit-filter: blur(2px);
     filter: blur(2px);
     background-color: rgb(24, 24, 24);
-    opacity: 0.4;
+    opacity: 0.25;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
