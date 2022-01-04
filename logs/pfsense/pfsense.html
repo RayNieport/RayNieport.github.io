@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"> 
-    <title>Ray's PfSense</title>
+    <title>Ray Nieport - PfSense</title>
     <link rel="stylesheet" type="text/css" href="pfsense.css">
     <link rel="shortcut icon" href="../../index_images/favicon.png" type="image/x-icon"/>
     <link rel="preload" as="image" href="../log_images/PfSense.png" />
@@ -18,16 +18,63 @@
     </div>
 
     <div class="content-container">
-        <br>
-        <p style="text-align: center;">
-            Nothing here yet! Please check back later.
+        <h2><u>Heart of a Network</u></h2>
+        <p>
+            Having solid network infrastructure is key to running a home server environment, but is also becoming increasingly important 
+            even in the lives of less tech-savvy individuals. At the heart of most home networks is the wireless router, which directs traffic between 
+            all devices connected to the network and the broader internet. As the popularity of work-from-home, video calls, and online gaming exploded 
+            in early 2020, it became evident to many people that their cheap off-the-shelf wireless router couldn't keep up with the number of devices 
+            connecting or the sheer volume of traffic being created. Not only is this consumer-grade networking gear often unable to keep up, 
+            but it is also notoriously insecure and lacks many features that enthusiasts expect. Unpatched firmware and unsupported devices 
+            have become such an issue over the years that projects like <a href="https://en.wikipedia.org/wiki/DD-WRT">DD-WRT</a>, 
+            <a href="https://en.wikipedia.org/wiki/OpenWrt">OpenWrt</a>, and <a href="https://en.wikipedia.org/wiki/Tomato_(firmware)">FreshTomato</a> 
+            have sought to create open-source alternatives to pre-installed wireless router firmware. While all three of these options can provide 
+            additional security updates and features to your home router, better software can't magically improve performance of the underpowered 
+            <a href="https://en.wikipedia.org/wiki/System_on_a_chip">SoCs</a> that run in consumer-level gear.
+        </p>
+
+        <h2><u>Enterprise-grade Networking at Home</u></h2>
+        <p>
+            To solve this problem of underpowered home routers without breaking the bank on power-hungry and loud business-class networking gear, many
+            in the home server community have turned to the <a href="https://docs.netgate.com/pfsense/en/latest/general/index.html">pfSense</a>
+            project, which can run on practically any semi-modern x86-64 or amd64 based computer. This project aims to provide powerful router/firewall
+            functionality built on top of <a href="https://en.wikipedia.org/wiki/FreeBSD">FreeBSD</a>, along with a relatively simple web interface for
+            configuration and management. On top of being a rock-solid router and firewall with all the features you'd expect in a consumer-grade router,
+            pfSense includes a wide variety of more advanced features that will make power-users and tinkerers grin. VPNs, traffic shaping,
+            <a href="https://en.wikipedia.org/wiki/Virtual_LAN">VLANs</a>, <a href="https://en.wikipedia.org/wiki/Dynamic_DNS">Dynamic DNS</a>,
+            iperf, and a host of official packages give pfSense a feature set far beyond any typical off-the-shelf router. There is also a high availabiltiy
+            feature and a straightforward backup/restore feature, which allows you to make changes to your network without the risk of too much downtime.
+        </p>
+        <p>
+            Below is a fantastic video from Lawrence Systems which delves into the installation and setup of pfSense. I would highly recommend installing
+            the Status_Traffic_Totals package, which allows traffic to be monitored over time and visualized using a nice graph.
+        </p>
+        <p class="youtubevideo"><a href="https://youtu.be/fsdm5uc_LsU" target="_blank" rel="noopener"><img class="youtubevideo-content" src="https://i.ytimg.com/vi/fsdm5uc_LsU/maxresdefault.jpg" loading="lazy" alt="YouTube Tutorial"></a></p>
+
+        <h2><u>Side Note: Knowing when to Virtualize</u></h2>
+        <p>
+            As a final note, I would like to comment that I have been running pfSense as my main home router since sometime in late 2019. I have experimented
+            with several different setups and have finally settled on one that I plan to stick with. At first, I ran pfSense on a dedicated server: an old
+            Dell R710. At the time I didn't mind that it was overkill, but I soon realized that running a bunch of decommissioned
+            <a href="https://en.wikipedia.org/wiki/Westmere_(microarchitecture)#Westmere_CPUs">Westmere</a> based servers could really increase my power bill.
+            Next, I tried to consolidate all of my services and VMs onto a single machine. I successfully used
+            <a href="https://pve.proxmox.com/wiki/PCI(e)_Passthrough">PCIe passthrough</a> in <a href="../proxmox/proxmox.html">Proxmox Virtual Environment</a>
+            to pass a network card into my pfSense VM, and I ran my network this way for a while. However, I found it annoying that every time I had to reboot my
+            hypervisor, I also lost my internet access.
+        </p>
+        <p>
+            As a result, I decided to set aside a small low-power machine to act as a dedicated pfSense box: my late 2012 Mac Mini. This machine had outlived its usefulness
+            as a desktop computer, but has provided more than enough performance to handle my fiber internet connection. It has a small footprint and has proven to be quiet,
+            cool, and reliable. I simply ordered a thunderbolt to gigabit ethernet adapter in order to provide one LAN port and one WAN port. I would highly recommend finding
+            a low-power machine like this for pfSense, since it is something that will be on all the time. Now I can update, reboot, and experiment with my hypervisor without
+            internet downtime.
         </p>
     </div>
 
     <div class="navbar">
         <ul>
             <li><a href="../../index.html">Home</a></li>
-            <li><a href="../logs.html">Logs</a></li>
+            <li><a href="../logs.html">Articles</a></li>
             <li><a href="https://github.com/RayNieport">Github</a></li>
         </ul>
     </div>

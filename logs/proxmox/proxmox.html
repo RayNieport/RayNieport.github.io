@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1">   
-    <title>Ray's Proxmox Setup</title>
+    <title>Ray Nieport - Proxmox</title>
     <link rel="stylesheet" type="text/css" href="proxmox.css">
     <link rel="shortcut icon" href="../../index_images/favicon.png" type="image/x-icon"/>
     <link rel="preload" as="image" href="../log_images/Proxmox.png" />
@@ -50,7 +50,7 @@
         <h2><u>Setup</u></h2>
         <p>
             After installing Proxmox, there are a several steps I like to take before getting down to business creating VMs and containers. First, we need to add a source to the package manager.
-            Proxmox offers a subscription, and you won't be able to update or install packages by default unless you pay the subscription fee or enable the community repository. To enable the repo:
+            Proxmox offers a subscription, and you won't be able to update or install packages by default unless you pay the subscription fee or enable the community repository. To enable this community repo:
             <ol>
                 <li>Edit <code>/etc/apt/sources.list.d/pve-enterprise.list</code> with your favorite text editor.</li>
                 <li>Comment out <code>deb https://enterprise.proxmox.com/debian/pve bullseye pve-enterprise</code>.</li>
@@ -80,7 +80,7 @@
         <p>
             Now that Proxmox is up and running, you can create VMs and containers to your heart's content! 
             Proxmox is very powerful, and we've only just scratched the surface. 
-            Check out <a href="https://pve.proxmox.com/wiki/PCI(e)_Passthrough">PCIe passthrough</a>, or maybe explore the difference between VMs and containers.
+            Check out <a href="https://pve.proxmox.com/wiki/PCI(e)_Passthrough">PCIe passthrough</a>, or further explore the difference between VMs and containers.
             Most importantly, have fun!
         </p>
     </div>
@@ -88,7 +88,7 @@
     <div class="navbar">
         <ul>
             <li><a href="../../index.html">Home</a></li>
-            <li><a href="../logs.html">Logs</a></li>
+            <li><a href="../logs.html">Articles</a></li>
             <li><a href="https://github.com/RayNieport">Github</a></li>
         </ul>
     </div>

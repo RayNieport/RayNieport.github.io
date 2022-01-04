@@ -20,7 +20,7 @@ body {
     text-align: center;
 }
 .content-container h2{
-    font-size: 1.25em;
+    font-size: 1em;
 }
 
 .content-container:after {
@@ -29,16 +29,10 @@ body {
     clear: both;
 }
 
-.content {
-    float: left;
-    width: 46%;
-    padding: 2%;
-}
-
 .link-image {
-    float: left;
-    width: 46%;
-    padding: 2%;
+    width: 60%;
+    padding-left: 20%;
+    padding-right: 20%;
 }
 
 .link-image-content {
@@ -80,10 +74,9 @@ body {
 
 
 @media (max-aspect-ratio: 1/1){
-    .content{
-        width: 100%;
-    }
     .link-image {
-        width: 100%;
+        width: 80%;
+        padding-left: 10%;
+        padding-right: 10%;
     }
 }

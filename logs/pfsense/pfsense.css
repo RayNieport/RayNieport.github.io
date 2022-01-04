@@ -91,6 +91,16 @@ body {
 .youtubevideo {
     text-align: center;
 }
+.youtubevideo-content {
+    border: 1px solid white;
+    cursor: pointer;
+}
+.youtubevideo-content:hover {
+    box-shadow: 0 0 10px white;
+}
+.youtubevideo-content:active {
+    box-shadow: 0 0 10px white;
+}
 
 @media (max-aspect-ratio: 1/1){
     .banner-text {
