@@ -39,6 +39,7 @@ body {
 
 .content-container {
     font-size: 1.25em;
+    /*line-height: 1.25;*/
     padding-left: 10vw;
     padding-right: 10vw;
     /*width: 80vw;*/
