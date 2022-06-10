@@ -29,7 +29,7 @@
             We start at the far right: 'io'. That's the top-level domain, and you've undoubtedly seen others like 'com', 'org', 'gov', 'edu', and so on.
             Moving left, 'github' is the name of the domain you're trying to visit. Finally, 'raynieport' is the subdomain.
             When you type a URL in, your computer first asks the top level domain (io) where to find the domain (github), and then asks the domain where to find the subdomain (raynieport).
-            This method of oragnization allows your computer to find the right website out of the millions of servers connected to the internet.
+            This method of organization allows your computer to find the right website out of the millions of servers connected to the internet.
         </p>
         <p>
             However, if you're already thinking of tinkering with your home network or setting up a home server environment, you're probably aware that the internet is built on
@@ -68,21 +68,21 @@
         </p>
         <p>
             When you load up a typical modern webpage, assets are often loaded from several different sources.
-            For example, a video (like an embedded YouTube video) may reside on a completely diffent web server than the HTML and CSS.
+            For example, a video (like an embedded YouTube video) may reside on a completely different web server than the HTML and CSS.
             Ads are one of the most common assets to be loaded from an external source.
-            A huge majority of ads online are <a href="https://en.wikipedia.org/wiki/Ad_serving">essentially embedded links</a> that display targeted adverstising based on who is viewing them.
+            A huge majority of ads online are <a href="https://en.wikipedia.org/wiki/Ad_serving">essentially embedded links</a> that display targeted advertising based on who is viewing them.
             So, if a webpage tries to connect to an advertising domain to load ads, but the DNS server doesn't return the IP address... then the webpage will load up ad-free.
         </p>
         <p>
             A "DNS sinkhole" returns the IP address as usual for most connections, but refuses to return the IP address of a specific set of domains.
-            In this case, we want to ignore requests for known adverstising domains. If you create such a DNS sinkhole on your local network and send all DNS requests to it, the result is
+            In this case, we want to ignore requests for known advertising domains. If you create such a DNS sinkhole on your local network and send all DNS requests to it, the result is
             <strong><u>a nearly ad-free internet connection for all devices on your network, including phones and devices without traditional ad-blocking software.</u></strong>
         </p>
 
         <h2><u>Pi-hole</u></h2>
         <p>
-            <a href="https://en.wikipedia.org/wiki/Pi-hole">Pi-hole</a> is a lightweight and easy-to-manage DNS sinkhole desined specifically to block ads across your local network.
-            The service is so lightweight, in fact, that it can be run on something as inexpensive as a Raspberry Pi (hense the name Pi-hole). The installation is pretty straightforward,
+            <a href="https://en.wikipedia.org/wiki/Pi-hole">Pi-hole</a> is a lightweight and easy-to-manage DNS sinkhole designed specifically to block ads across your local network.
+            The service is so lightweight, in fact, that it can be run on something as inexpensive as a Raspberry Pi (hence the name Pi-hole). The installation is pretty straightforward,
             and it can run on <a href="https://docs.pi-hole.net/main/prerequisites/">a wide range of Linux devices</a>. Below is a setup video from Linus Tech Tips, but there are also
             installation instructions on the project's <a href="https://github.com/pi-hole/pi-hole/#one-step-automated-install">GitHub</a>. If you prefer to run Pi-hole in 
             <a href="https://en.wikipedia.org/wiki/Docker_(software)">Docker</a>, see the <a href="https://github.com/pi-hole/docker-pi-hole/#running-pi-hole-docker">official Docker image</a>.
