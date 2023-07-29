@@ -49,17 +49,13 @@
 
         <h2><u>Setup</u></h2>
         <p>
-            After installing Proxmox, there are a several steps I like to take before getting down to business creating VMs and containers. First, we need to add a source to the package manager.
-            Proxmox offers a subscription, and you won't be able to update or install packages by default unless you pay the subscription fee or enable the community repository. To enable this community repo:
-            <ol>
-                <li>Edit <code>/etc/apt/sources.list.d/pve-enterprise.list</code> with your favorite text editor.</li>
-                <li>Comment out <code>deb https://enterprise.proxmox.com/debian/pve bullseye pve-enterprise</code>.</li>
-                <li>Add the folling line: <code>deb http://download.proxmox.com/debian/pve bullseye pve-no-subscription</code>.</li>
-            </ol>
+            After installing Proxmox, we need to correctly configure the package manager sources for personal use.
+            Proxmox offers a subscription, and you won't be able to update or install packages by default unless you pay the subscription fee or enable the community repository.
+            Comment out the <code>pve-enterprise</code> repository and add the <code>pve-no-subscription</code> repository as detailed on <a href="https://pve.proxmox.com/wiki/Package_Repositories">this wiki page</a>.
         </p>
         <p>
-            Next, I like to install <a href="https://github.com/Weilbyte/PVEDiscordDark">PVEDiscordDark</a>, which gives the Proxmox Web GUI a nice dark theme. 
-            The default theme is bright white, and I've fallen in love with all things Dark Mode&trade;. Save your eyes, and enjoy some late night homelabbing.
+            In versions prior to 7.4, I also like to install <a href="https://github.com/Weilbyte/PVEDiscordDark">PVEDiscordDark</a>, which gives the Proxmox Web GUI a nice dark theme. 
+            The default theme in these older versions is bright white, and I've fallen in love with all things Dark Mode&trade;. Save your eyes, and enjoy some late night homelabbing.
         </p>
         <p>
             As I mentioned previously, one of the great things about Proxmox is its built in support for the ZFS filesystem. 
